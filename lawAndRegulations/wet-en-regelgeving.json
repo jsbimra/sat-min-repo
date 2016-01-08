@@ -1,0 +1,170 @@
+
+  "product": "Self Assessment Tool",
+  "version": 0.1,
+  "category": {
+    "cat_name": "WET EN REGELGEVING",
+    "questions": [
+      {
+        "q_id": 1,
+        "q_type": "multiple",
+        "q_text": "Is er een RI&E beschikbaar voor uw organisatie?",
+        "q_options": [
+          {
+            "option_id": "1_1",
+            "option_text": "Nee, er is geen RI&E beschikbaar",
+            "score_value" : 10
+
+          },
+          {
+            "option_id": "1_2",
+            "option_text": "Ja, maar de RI&E geeft nog onvoldoende inzicht in de risico’s in onze organisatie",
+            "score_value" : 20
+          },
+          {
+            "option_id": "1_3",
+            "option_text": "Ja, en de RI&E geeft voldoende inzicht in de risico’s in onze organisatie",
+            "score_value" : 30
+          },
+          {
+            "option_id": "1_4",
+            "option_text": "Ja, en de RI&E is de leidraad voor het verbeteren van de arbeidsomstandigheden",
+            "score_value" : 40
+          },
+          {
+            "option_id": "1_5",
+            "option_text": "Ja, en de RI&E is de leidraad voor het verbeteren van de arbeidsomstandigheden en wordt jaarlijks (indien nodig) bijgesteld",
+            "score_value" : 50
+          }
+        ]
+      },
+      {
+        "q_id": 2,
+        "q_type": "single",
+        "q_text": "Wordt uw organisatie bijgestaan door een gecertificeerde arbodeskundige?",
+        "q_options": [
+          {
+            "option_id": 1,
+            "option_text": "Nee, onze organisatie heeft geen arbodeskundige",
+            "option_group" : "group_1",
+            "score_value" : 30
+          },
+          {
+            "option_id": 2,
+            "option_text": "Ja, maar de arbodeskundige is niet betrokken bij preventie",
+            "option_group" : "group_1",
+            "score_value" : 20
+          },
+          {
+            "option_id": 3,
+            "option_text": "Ja, en de arbodeskundige is betrokken bij overleg over het arbobeleid",
+            "option_group" : "group_1",
+            "score_value" : 10
+          },
+          {
+            "option_id": 4,
+            "option_text": "Ja, en de arbodeskundige adviseert preventiemedewerkers over mogelijkheden tot ziektepreventie",
+            "option_group" : "group_1",
+            "score_value" : 40
+          },
+          {
+            "option_id": 5,
+            "option_text": "Ja, en de arbodeskundige weet wat er speelt op de werkvloer",
+            "option_group" : "group_1",
+            "score_value" : 50
+          }
+        ]
+      },
+      {
+        "q_id": 3,
+        "q_type": "multiple",
+        "q_text": "Is er binnen uw organisatie een preventiemedewerker aanwezig?",
+        "q_options": [
+          {
+            "option_id": "3_1",
+            "option_text": "Nee, er is geen preventiemedewerker aanwezig",
+            "score_value" : 10
+          },
+          {
+            "option_id": "3_2",
+            "option_text": "Ja, maar de preventiemedewerker heeft geen inzicht in de aanwezige risico's",
+            "score_value" : 30
+          },
+          {
+            "option_id": "3_3",
+            "option_text": "Ja, en de preventiemedewerker weet hoe de risico’s te voorkomen of verkleinen",
+            "score_value" : 40
+          },
+          {
+            "option_id": "3_4",
+            "option_text": "Ja, en de preventiemedewerker heeft regelmatig contact met de directeur over de risico’s",
+            "score_value" : 50
+          }
+        ]
+      },
+      {
+        "q_id": 4,
+        "q_type": "scale",
+        "q_text": "Werknemers in onze organisatie krijgen voorlichting en instructies over gezond en veilig werken",
+        "q_options": [
+			{
+				"option_id" : 1,
+				"option_text" : "Helemaal oneens",
+				"option_group" : "scale_group_1",
+        "score_value" : 50
+			},
+			{
+				"option_id" : 2,
+				"option_text" : "Oneens",
+				"option_group" : "scale_group_1",
+        "score_value" : 30
+			},
+			{
+				"option_id" : 3,
+				"option_text" : "Neutraal",
+				"option_group" : "scale_group_1",
+        "score_value" : 20
+			},
+			{
+				"option_id" : 4,
+				"option_text" : "Eens",
+				"option_group" : "scale_group_1",
+        "score_value" : 40
+			},
+			{
+				"option_id" : 5,
+				"option_text" : "Helemaal eens",
+				"option_group" : "scale_group_1",
+        "score_value" : 10
+			}
+		]        
+      },
+      {
+        "q_id": 5,
+        "q_type": "multiple",
+        "q_text": "Zijn er mensen binnen uw organisatie die toezicht houden op gezond en veilig werken?",
+        "q_options": [
+          {
+            "option_id": "5_1",
+            "option_text": "Nee, er wordt geen toezicht gehouden op gezond en veilig werken",
+            "score_value" : 10
+          },
+          {
+            "option_id": "5_3",
+            "option_text": "Ja, er zijn werknemers aangewezen als dagelijkse toezichthouders op de werkvloer",
+            "score_value" : 30
+          },
+          {
+            "option_id": "5_3",
+            "option_text": "Ja, en de toezichthouders weten waar ze op moeten letten en wanneer ze moeten ingrijpen",
+            "score_value" : 25
+          },
+          {
+            "option_id": "5_4",
+            "option_text": "Ja, de werkgever is zelf regelmatig op de werkvloer om het gedrag van medewerkers te observeren",
+            "score_value" : 10
+          }
+        ]
+      }
+    ]
+  }
+}

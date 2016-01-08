@@ -1,0 +1,56 @@
+
+
+<custom-loader ng-show="parentCtrl.loadingFlag"></custom-loader>
+
+<div class="landing-template">
+    <div class="row">
+        <div class="landing-form-slide slides center-block">
+        	<div class="sector-comp-img"><img class="img-responsive" src="images/landing-page-img.png" alt="landing image" />            
+            </div>
+            <p class="text-center">Welkom bij <b>De andere kijk op jouw zaak!</b></p>
+            <br>
+            <form class="form">
+                <div class="form-group">
+                    <label for="ddlSectorType">Selecteer de sector waarin jouw bedrijf werkzaam is</label>
+                    <select id="ddlSectorType" name="ddlSectorType" ng-model="parentCtrl.sectorType" class="form-control jsLandingDD">
+	                    <option value="">Selecteren</option>
+	                    <option ng-repeat="opt in landingCtrl.sectorList | orderBy:opt" value="{{opt}}" ng-selected="landingCtrl.lsSector == opt ? true: false ">{{opt}}</option>
+	                </select>
+                </div>
+                <div class="form-group">
+                    <label for="ddlCompanySize">Selecteer de grootte van jouw bedrijf</label>
+                    <select id="ddlCompanySize" name="ddlCompanySize" ng-model="parentCtrl.companySize" class="form-control jsLandingDD">
+	                    <option value="">Selecteren</option>
+	                    <option ng-repeat="opt in landingCtrl.companyList" value="{{opt}}" ng-selected="landingCtrl.lsCompany == opt ? true: false ">{{opt}}</option>
+	                </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row landing-content-slide slides hide-slide">
+        <div class="col-lg-12">
+            <h2>DE ANDERE KIJK OP JOUW ZAAK</h2>            
+            <div class="changeTypePanel">
+            	<a href="javascript:void(0);" class="jsSlideBack">Verander sector of bedrijfsgrootte</a>
+        	</div>
+        	<div>
+	            <p>Welkom, hier start De andere kijk op jouw zaak. Deze app helpt je om in vier stappen:</p>
+	            <ol class="disc">
+	                <li><span>Te bepalen hoe gezond en veilig werken op dit moment in jouw zaak is georganiseerd</span></li>
+	                <li><span>De stand van zaken te toetsen bij collega’s op de werkvloer</span></li>
+	                <li><span>De resultaten en mogelijke verbeteringen te bespreken met het MT of de directie</span></li>
+					<li><span>Te beslissen waar je start met het organiseren van gezond en veilig werken: breng de zaak in beweging!</span></li>
+	            </ol>
+	            <p>De vragenlijst doorloop je in nog geen 15 minuten. Als resultaat krijg je inzicht in de mate waarin gezond en veilig werken in jouw zaak is georganiseerd. Door op ‘i’ te klikken, krijg je uitleg of toelichting op de vraag. Er zijn <strong>gesloten vragen</strong> waarbij je steeds één optie kunt kiezen en <strong>open vragen</strong> waarbij je meerdere antwoorden kunt kiezen. Ten slotte zijn er <strong>schaalvragen</strong> waarbij gevraagd wordt aan te geven in welke mate (van helemaal oneens tot helemaal eens) een bepaalde stelling van toepassing is. Let op: als er bij een open vraag meerdere antwoorden op jouw zaak van toepassing zijn, vink deze dan allemaal aan. Je kunt de vragen, na het doorvoeren van verschillende verbeteringen, nogmaals invullen om opnieuw te bekijken hoe jouw zaak ervoor staat.</p>
+	            <p>Deze app is bestemd voor iedereen in jouw zaak die verantwoordelijk is voor het organiseren van gezond en veilig werken. De app is zeer toegankelijk, zowel voor medewerkers op de werkvloer als voor het management. Dit is dan ook de kracht van de app, hij helpt je om binnen jouw organisatie op verschillende niveaus het gesprek over gezond en veilig werken op gang te brengen. </p>
+	            <p>De resultaten van de app worden in eerste instantie alleen opgeslagen op jouw eigen apparaat. Na het invullen van de vragen kun je ervoor kiezen je resultaten te delen zodat je jouw resultaten kunt vergelijken met die van andere bedrijven.</p>
+	        </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-lg-12">
+            <p class="text-center">
+            	<a class="btn btn-primary" href="#toelichting" role="button">Doorgaan</a></p>
+                <!-- ng-click="parentCtrl.submitSectorCompany()" -->
+        </div>
+    </div>
+</div>
