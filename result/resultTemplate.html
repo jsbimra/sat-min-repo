@@ -1,0 +1,207 @@
+
+<custom-loader ng-show="resultCtrl.loadingFlag">
+</custom-loader>
+
+
+<div class="result-template" ng-show="!resultCtrl.loadingFlag">
+    <div class="row badge-separator">
+        <div class="col-lg-7 col-md-7 col-sm-12 desk-noLRPad">
+            <p>
+                <strong>Verdiende trofeeën</strong>
+                <br />In de tool kun je trofeeën verdienen voor de vier puzzelstukken. Naarmate je beter presteert, krijg je andere trofeeën. Op basis van de door jou ingevulde antwoorden, krijg je de volgende trofeeën:
+            </p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-md-offset-1 col-lg-offset-1 desk-noLRPad">
+            <div class="badges">
+                <a class="badgeHolder jsBadgePopover" href="javascript:void(0);" tabindex="1" data-container="body" data-trigger="focus" data-html="true" data-toggle="popover" data-content='<h4>Trofee</h4><div class="text-center    badge-popover-content"><img src="images/{{main.lawbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.lawbadgeGrade == lawBadge0}" /> <p>{{main.lawBadgeDescModel}}</p></div>' data-placement="bottom">
+                    <img src="images/{{main.lawbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.lawbadgeGrade == 'lawBadge0'}" />
+                </a>
+                <a class="badgeHolder jsBadgePopover" href="javascript:void(0);" tabindex="2" data-container="body" data-html="true" data-toggle="popover" data-content='<h4>Trofee</h4><div class="text-center badge-popover-content"><img src="images/{{main.orgbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.lawbadgeGrade == orgBadge0}" /> <p>{{main.orgBadgeDescModel}}</p></div>' data-placement="bottom">
+                    <img src="images/{{main.orgbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.orgbadgeGrade == 'orgBadge0'}" />
+                </a>
+                <a class="badgeHolder jsBadgePopover" href="javascript:void(0);" tabindex="3" data-container="body" data-html="true" data-toggle="popover" data-content='<h4>Trofee</h4><div class="text-center badge-popover-content"><img src="images/{{main.cultbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.lawbadgeGrade == cultBadge0}" /> <p>{{main.cultBadgeDescModel}}</p></div>' data-placement="bottom">
+                    <img src="images/{{main.cultbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.cultbadgeGrade == 'cultBadge0'}" />
+                </a>
+                <a class="badgeHolder jsBadgePopover" href="javascript:void(0);" tabindex="4" data-container="body" data-html="true" data-toggle="popover" data-content='<h4>Trofee</h4><div class="text-center badge-popover-content"><img src="images/{{main.techbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.lawbadgeGrade == techBadge0}" /> <p>{{main.techBadgeDescModel}}</p></div>' data-placement="bottom">
+                    <img src="images/{{main.techbadgeGrade}}.png" class="img-responsive" alt="" ng-class="{disabled: main.techbadgeGrade == 'techBadge0'}" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-8 desk-noLRPad">
+            <h2 class="center-block">resultaten 
+                <div class="pull-right result-icon-sets hideOnPrint">
+                    <a href="javascript:void(0);" class="print-link" onclick="window.print()" data-toggle="tooltip" data-placement="top" title="Print this page"><span class="glyphicon glyphicon-print"></span></a>
+                    <a href="javascript:void(0);" class="download-link jsDownloadBtn hidden-xs hidden-sm hidden-md hide" data-toggle="tooltip" data-placement="top" title="Download this page as PDF"><span class="glyphicon glyphicon-download-alt"></span></a>
+                </div>
+            </h2>
+            <div class="graph-container">
+                <canvas ng-if="chartData.length == 1" id="radarChart" class="chart chart-radar" data="chartData" labels="chartLabels" options="chartOptions" colours="chartColours" click="onChartClick" legend="true" series="['Jouw score']"></canvas>
+                <canvas ng-if="chartData.length != 1" id="radarChart" class="chart chart-radar" data="chartData" labels="chartLabels" options="chartOptions" colours="chartColours" click="onChartClick" legend="true" series="[resultCtrl.chartSectorLegend, 'Jouw score']"></canvas>
+            </div>
+            <div class="row hidden-md hidden-lg hideOnPrint">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+
+                    <h4 class="result-template-sideBarHeading">Vergelijk jouw score met andere bedrijven uit de sector <b>{{resultCtrl.sectorCompanyValue}}</b> en bedrijfsgrootte <b>{{resultCtrl.sizeCompanyValue}}</b> medewerkers: </h4>
+                    <ul class="result-sidebar-list">
+                        <li><a href="javascript:void(0);" ng-click="resultCtrl.confirmSubmit('sector_type');" ng-class="{active: resultCtrl.activeBenchmarkType == 'sector_type'}">Op sector</a></li>
+                        <li><a href="javascript:void(0);" ng-click="resultCtrl.confirmSubmit('company_size');" ng-class="{active: resultCtrl.activeBenchmarkType == 'company_size'}">Op aantal werknemers</a></li>
+                        <li><a href="javascript:void(0);" ng-click="resultCtrl.confirmSubmit('sector_type', 'company_size');" ng-class="{active: resultCtrl.activeBenchmarkType == 'both'}">Op sector en werknemers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tips-container clearfix page-break-before">
+                <h2 class="tips-header">Jouw zaak in beweging</h2>
+                <p>Naar aanleiding van de ingevulde antwoorden bij de verschillende onderwerpen (wet- en regelgeving, organisatie, cultuur en techniek) volgen hieronder verschillende tips die voor jouw organisatie relevant zijn. Kijk eens of je hiermee aan de slag kunt gaan. Verder is veel informatie over gezond en veilig werken te vinden op <a href="http://www.gezondenveiligwerkt.nl/" target="_blank">www.gezondenveiligwerkt.nl</a> en <a href="http://www.arboportaal.nl/" target="_blank">www.arboportaal.nl</a>. </p>
+                <!-- If Law Tips -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h4>Wet-en regelgeving</h4>
+                        <p ng-if="!resultCtrl.activateLawTips" ng-bind="resultCtrl.tipsDefaultText"></p>
+                        <ol class="disc" ng-if="resultCtrl.activateLawTips">
+                            <li ng-repeat="tips in resultCtrl.lawTips track by $index">
+                                <span ng-bind-html="tips"></span>
+                            </li>
+                        </ol>
+                        <p ng-show="resultCtrl.showLawHigherDefaultTip" ng-bind-html="resultCtrl.tipsDefaultHigherText"></p>
+                        
+                        <p><a href="#goede-praktijken-wet" class="btn-bestPractices">Goede praktijkvoorbeelden</a></p>
+                    </div>
+                </div>
+                <!-- If Org Tips -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h4>Organisatie</h4>
+                        <p ng-if="!resultCtrl.activateOrgTips" ng-bind="resultCtrl.tipsDefaultText"></p>
+                        <ol class="disc" ng-if="resultCtrl.activateOrgTips">
+                            <li ng-repeat="tips in resultCtrl.orgTips track by $index">
+                                <span ng-bind-html="tips"></span>
+                            </li>
+                        </ol>
+                        <p ng-show="resultCtrl.showOrgHigherDefaultTip" ng-bind-html="resultCtrl.tipsDefaultHigherText"></p>
+
+                        <p><a href="#goede-praktijken-org" class="btn-bestPractices">Goede praktijkvoorbeelden</a></p>
+                    </div>
+                </div>
+                <!-- If Cult Tips -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h4>Cultuur</h4>
+                        <p ng-if="!resultCtrl.activateCultTips" ng-bind="resultCtrl.tipsDefaultText"></p>
+                        <ol class="disc" ng-if="resultCtrl.activateCultTips">
+                            <li ng-repeat="tips in resultCtrl.cultTips track by $index">
+                                <span ng-bind-html="tips"></span>
+                            </li>
+                        </ol>
+                        <p ng-show="resultCtrl.showCultHigherDefaultTip" ng-bind-html="resultCtrl.tipsDefaultHigherText"></p>
+
+                        <p><a href="#goede-praktijken-cult" class="btn-bestPractices">Goede praktijkvoorbeelden</a></p>
+                    </div>
+                </div>
+                <!-- If Cult Tips -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <h4>Techniek</h4>
+                        <p ng-if="!resultCtrl.activateTechTips" ng-bind="resultCtrl.tipsDefaultText"></p>
+                        <ol class="disc" ng-if="resultCtrl.activateTechTips">
+                            <li ng-repeat="tips in resultCtrl.techTips track by $index">
+                                <span ng-bind-html="tips"></span>
+                            </li>
+                        </ol>
+                        <p ng-show="resultCtrl.showTechHigherDefaultTip" ng-bind-html="resultCtrl.tipsDefaultHigherText"></p>
+
+                        <p><a href="#goede-praktijken-tech" class="btn-bestPractices">Goede praktijkvoorbeelden</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <br/>
+                        <div class="well well-sm">Tips, goede praktijkvoorbeelden of vragen zijn van harte welkom via <a href="mailto:projectteam@szwzelfregulering.viadesk.com" title="projectteam@szwzelfregulering.viadesk.com">gezondenveiligwerkt</a>.</div>
+                    </div>
+                </div>
+                <div class="row hideOnPrint hide">
+                    <div class="col-sm-12 col-md-5 col-lg-5">
+                        <br />
+
+                        <div class="dropup best-practise-sidebar">
+                            <button type="button" class="btn btn-primary dropdown-toggle col-xs-12 col-sm-12 col-md-12 col-lg-12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Goede praktijkvoorbeelden</button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#goede-praktijken-wet">Wet-En Regelgeving</a></li>
+                                <li><a href="#goede-praktijken-org">Organisatie</a></li>
+                                <li><a href="#goede-praktijken-cult">Cultuur</a></li>
+                                <li><a href="#goede-praktijken-tech">Techniek</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row hideOnPrint hide">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="result-action-block text-center">
+                        <a href="javascript:void(0);" class="btn btn-small btn-primary" onclick="window.print()">Print</a>
+                        <a href="javascript:void(0);" class="btn btn-small btn-primary jsDownloadBtn hidden-xs hidden-sm hidden-md hide">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-3 col-lg-3 col-md-offset-1 desk-noLRPad share-data-sidebar hidden-xs hidden-sm">
+            <h4 class="result-template-sideBarHeading">Vergelijk jouw score met andere bedrijven uit de sector <b>{{resultCtrl.sectorCompanyValue}}</b> en bedrijfsgrootte <b>{{resultCtrl.sizeCompanyValue}}</b> medewerkers:</h4>
+            <ul class="result-sidebar-list">
+                <li><a href="javascript:void(0);" ng-click="resultCtrl.confirmSubmit('sector_type');" ng-class="{active: resultCtrl.activeBenchmarkType == 'sector_type'}">Op sector</a></li>
+                <li><a href="javascript:void(0);" ng-click="resultCtrl.confirmSubmit('company_size');" ng-class="{active: resultCtrl.activeBenchmarkType == 'company_size'}">Op aantal werknemers</a></li>
+                <li><a href="javascript:void(0);" ng-click="resultCtrl.confirmSubmit('sector_type', 'company_size');" ng-class="{active: resultCtrl.activeBenchmarkType == 'both'}">Op sector en werknemers</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 col-md-offset-1 desk-noLRPad best-practise-sidebar">
+            
+            <!-- <ul class="result-sidebar-list">
+                <li><a href="#goede-praktijken-wet">Wet-En Regelgeving</a></li>
+                <li><a href="#goede-praktijken-org">Organisatie</a></li>
+                <li><a href="#goede-praktijken-cult">Cultuur</a></li>
+                <li><a href="#goede-praktijken-tech">Techniek</a></li>
+            </ul> -->
+        </div>
+        <!-- Modal code for confirmation -->
+        <div class="modal fade confirmationModal " id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Bevestigen</h4>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p ng-bind="resultCtrl.termSaveText"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary jsConfirmYes" ng-click="resultCtrl.submitResults(resultCtrl.whatType)" ng-bind="resultCtrl.confirmYesText"></button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Nee, ik geef geen toestemming</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal code for confirmation -->
+
+
+        <!-- Modal code for user alert -->
+        <div class="modal fade confirmationModal " id="userAlertModal" tabindex="-1" role="dialog" aria-labelledby="userAlertModalLabel">
+            <div class="modal-dialog" role="document" ng-class="{'modal-sm': !resultCtrl.lessRecordsFlag, 'modal-md': resultCtrl.lessRecordsFlag}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title jsUserAlertModalTitle">Melding</h4>
+                    </div>
+                    <div class="modal-body text-center jsUserAlertModalBody">
+                        <p ng-show="!resultCtrl.lessRecordsFlag">Je kunt nog geen scores vergelijken, omdat je nog geen vragen hebt ingevuld.</p>
+                        <p ng-bind-html="resultCtrl.lessRecordMsg" ng-show="resultCtrl.lessRecordsFlag"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal code for user alert -->
+    </div>
+</div>

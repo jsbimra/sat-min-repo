@@ -1,1 +1,200 @@
-first page
+
+<!DOCTYPE html>
+<html lang="en" ng-app="satApplication">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="icon" href="favicon.ico">
+
+		<title>Self Assessment Tool</title>
+
+	    <!-- Outdated Browser CSS
+	    <link href="outdatedbrowser/outdatedbrowser.css" rel="stylesheet">
+		 -->
+		<!-- Bootstrap core CSS 
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link  href="css/angular-chart.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link  href="css/prettyCheckable.css" rel="stylesheet" />
+		-->
+
+		 <!-- Combined all css into single file -->
+		<link  href="css/appcompiled.min.css" rel="stylesheet" />
+
+		<!-- Css for print page call it after other stylesheet -->
+		<link href="css/print.css" rel="stylesheet" media="print" />
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="dist/html5shiv.min.js"></script>
+			<script src="dist/respond.min.js"></script>
+		<![endif]-->
+
+		<!--[if IE 8]>
+			
+		<![endif]-->
+		<!-- <script src="dist/es5-shim.min.js"></script> -->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="dist/angular.min.js"></script>
+		<script src="dist/angular-sanitize.min.js"></script>
+		<script src="dist/angular-route.js"></script>
+		<!-- <script src="js/prettyCheckable.js"></script> -->
+      	<script src="outdatedbrowser/outdatedbrowser.min.js"></script>
+
+	</head>
+
+	<body>   		
+   		<!-- Outdated Browser code -->
+		<div id="outdated">
+			<!-- <h6>Your browser is out-of-date!</h6>
+		    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+		     <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p> -->
+		</div>
+
+		<script type="text/javascript">
+            //plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                //lowerThan: 'transform', /* for < ie10 default*/
+                lowerThan: 'boxShadow', /* for < ie9*/
+                languagePath: 'outdatedbrowser/lang/nl.html' /* for german */
+                //languagePath: 'outdatedbrowser/lang/en.html' /* for english*/
+            });
+        
+		</script>
+        <script type="text/javascript" src="js/GALocalStorage.js"></script>
+        <script>
+            ga_storage._setAccount('UA-69826775-1'); //Replace with your own
+           // ga_storage._trackPageview('/index.html');
+            
+        </script>
+
+		<div ng-controller="parentController as parentCtrl">
+			<!-- Fixed navbar -->
+			<nav class="navbar navbar-default navbar-fixed-top" ng-controller="navbarController as navCtrl">
+			  <div class="container">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed ng-hide" data-toggle="collapse" 
+			              data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+			              ng-class="{'ng-hide':navCtrl.hideNavBar}">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			      <a class="navbar-brand" href="javascript:void(0)"
+			            ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'landing')">
+				      <img src="images/logo.png" width="312" class="visible-lg" height="61" alt=""/>
+				      <img src="images/logo_ipad.png" width="200" height="39" class="visible-md visible-sm" alt=""/>
+				      <img src="images/logo_mobile.png" width="150" height="29" class=" visible-xs" alt=""/>
+				  </a>
+			    </div>
+				
+			    <div id="navbar" class="navbar-collapse collapse hide" ng-class="{hide:navCtrl.hideNavBar}">
+			      <ul class="nav navbar-nav navbar-right navbar-bottom">
+			        <li ng-class="navCtrl.setActiveClass('/toelichting')">
+			            <a href="javascript:void(0)" ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'toelichting')">TOELICHTING</a>
+			       	</li>
+			        <li ng-class="navCtrl.setActiveClass('/wet-en-regelgeving')">
+			            <a href="javascript:void(0)" class="text-left" ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'wet-en-regelgeving')">
+
+			            	<span class="pull-right tickIconHolder" ng-class="{hide: parentCtrl.toggleLawCheckIcon==false}" ><img src="img/tickIcon.png" alt="" /></span>WET- EN REGELGEVING</a>
+			        </li>
+			        <li ng-class="navCtrl.setActiveClass('/organisatie')">
+			            <a href="javascript:void(0)" ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'organisatie')">
+
+			            	<span class="pull-right tickIconHolder" ng-class="{hide: parentCtrl.toggleOrgCheckIcon==false}"><img src="img/tickIcon.png" alt="" /></span>ORGANISATIE</a>
+			        </li>
+			        <li ng-class="navCtrl.setActiveClass('/cultuur')">
+			            <a href="javascript:void(0)" 
+			            	ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'cultuur')">
+			            	<span class="pull-right tickIconHolder" ng-class="{hide: parentCtrl.toggleCultCheckIcon==false}"><img src="img/tickIcon.png" alt="" /></span> CULTUUR</a>
+			        </li>
+			        <li ng-class="navCtrl.setActiveClass('/techniek')">
+			            <a href="javascript:void(0)"
+			            	ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'techniek')">
+			            	<span class="pull-right tickIconHolder" ng-class="{hide: parentCtrl.toggleTechCheckIcon==false}"><img src="img/tickIcon.png" alt="" /></span>TECHNIEK</a>
+			        </li>
+			        <li ng-class="navCtrl.setActiveClass('/resultaten')">
+			            <a href="javascript:void(0)" 
+			            	ng-click="parentCtrl.saveForm(parentCtrl.categoryObject.cat_type, 'questionarieForm', parentCtrl.categoryObject.cat_score, 'resultaten')">
+			            	RESULTATEN</a>
+			        </li>
+			        <li ng-show="parentCtrl.clearLSFlag"><a href="javascript:void(0);" id="clearLStorage" ng-click="parentCtrl.clearStorage();">Reset App</a></li>
+			      </ul>
+			    </div><!--/.nav-collapse -->
+			  </div>
+			</nav>
+			
+			
+
+			<div class="container" ng-controller="mainController as main">
+				
+			  <ng-view></ng-view>   
+			</div> <!-- /container -->
+		</div>
+
+			  
+		<a href="javascript:void(0);" class="backToTop hidden-xs hidden-sm1" id="backToTop" title="Scroll to top"><span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span></a>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/clickSuck.js"></script> <!-- Always keep it above custom.js -->
+		<script src="js/custom.js"></script>
+
+		<script src="js/Chart.js"></script>
+
+		<script src="js/angular-chart.js"></script>
+
+
+		<!--
+		<script>
+			/*
+				Series have beautiful pre-sets colours (to a maximum of 7 series, after that colours will be randomly generated). 
+				They can be overwritten using Chart.defaults.global.colours.
+			*/
+			Chart.defaults.global.colours = ['#cde5f2', '#2398a9', "#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"];
+		console.log(Chart.defaults.global.colours);
+			
+		</script
+		-->
+
+		<!-- 
+		<script src="app-script/app.js"></script>
+		<script src="app-script/app.constants.js"></script>
+		<script src="app-script/route-config.js"></script>
+		<script src="app-script/dataservice.js"></script>
+		<script src="app-script/app.factory.js"></script>
+		<script src="app-script/result.chart.factory.js"></script>
+		<script src="app-script/parent.controller.js"></script>
+		<script src="app-script/main.controller.js"></script>
+		<script src="app-script/navbar.controller.js"></script>
+		<script src="app-script/questionnaire.directive.js"></script>
+		<script src="app-script/loader.directive.js"></script>
+		
+		<script src="landing/landingController.js"></script>
+		<script src="instruction/instructionController.js"></script>
+		<script src="lawAndRegulations/lawAndRegulations.controller.js"></script>
+		<script src="organization/organization.controller.js"></script>
+		<script src="culture/culture.controller.js"></script>
+		<script src="techniek/techniek.controller.js"></script>
+		<script src="result/result.controller.js"></script>
+		<script src="best-practises/best.practises.controller.js"></script>
+		
+		-->
+		
+		<script src="build/app.min.js"></script>
+
+
+	</body>
+</html>

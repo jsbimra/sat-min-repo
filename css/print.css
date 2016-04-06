@@ -1,0 +1,35 @@
+/* 
+	To enable background printing for chrome
+	-webkit-print-color-adjust:exact;
+
+	IF a user has "Print Background colours and images" turned off in their print settings, 
+	no CSS will override that, so always account for that. This is a default setting.
+	http://stackoverflow.com/questions/3893986/css-media-print-issues-with-background-color
+
+*/
+
+body {padding-top: 0px; color:#000; background: #000; -webkit-print-color-adjust:exact;}
+
+.navbar, 
+.navbar-default{ 
+	background: #2398a9 !important;
+	border: 0px solid red;
+}
+.navbar{min-height: 90px;}
+
+.navbar-header .visible-lg{display: block !important;}
+.navbar-header .visible-md, .navbar-header .visible-sm, .navbar-header .visible-xs{display: none !important;}
+
+
+/* main menu link*/
+#navbar{display: none;}
+
+.navbar-fixed-top{position: static; display: block;}
+
+.page-break-before{page-break-before: always;}
+
+.result-template .badges{float:left;}
+
+.hideOnPrint,
+.best-pracise-sidebar, 
+.navbar-toggle {display: none;}

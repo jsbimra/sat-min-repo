@@ -1,0 +1,108 @@
+
+<custom-questionnaire cat-data="lRCtrl.catData"></custom-questionnaire>
+
+<!-- 
+<div class="lawAndRegulations-template content-template">  
+	<form novalidate name="formLawAndRegulation" id="formLawAndRegulation">
+		<div class="row">
+			<div class="col-lg-6 col-md-5 col-sm-12">
+				<h2 ng-bind="lRCtrl.catData.cat_name"></h2>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+				<p class="badgeHolder"><img src="images/badge4.png" width="47" height="47" alt=""/></p>
+				<p class="badgeHolder"><img src="images/badge3.png" width="47" height="47" alt=""/></p>
+				<p class="badgeHolder"><img src="images/badge2.png" width="47" height="47" alt=""/></p>
+				<p class="badgeHolder"><img src="images/badge1.png" width="47" height="47" alt=""/></p>
+			</div>
+			<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+				<p class="quest-box"><span class="questNos">2 / 5</span> questions answered.</p>
+			</div>
+		</div>
+		<div class="row survey">
+
+			<div class="col-lg-12 set jsPrettyWrapper" ng-repeat="question in lRCtrl.vQuestions">
+
+				<div class="media">
+					<div class="media-left">
+						<h4 ng-bind="question.q_id"></h4>
+					</div>
+					<div class="media-body">
+
+						<div class="pull-right">
+							<a href="javascript:void(0);" 
+				       	  		data-toggle="popover" 
+				       	  		data-placement="left" 
+				       	  		data-content="<strong>Is er een RI&E beschikbaar voor uw organisatie?</strong><p>Lorem ipsum dolor sit amet, ex nec laoreet facilisi posidonium, nam ut fuisset accumsan.</p> <strong><p>Is er een RI&E beschikbaar voor uw organisatie?</strong>Lorem ipsum dolor sit amet, ex nec laoreet facilisi posidonium, nam ut fuisset accumsan. Vel populo eripuit ne, ea aperiam dissentiunt has  Ius et dolorem civibus. An nec stet platonem, in sumo tollit nonumy nec. Per ad nihil altera latine.</p>">       	  		
+				       	  		<img src="images/info.png" width="26" height="28" alt=""/>
+				       	  	</a>
+						</div>
+
+						<h4 class="media-heading" id="media-heading" ng-bind="question.q_text"></h4>
+						
+						<div ng-if="lRCtrl.vQuestions[$index].q_type == 'multiple' ">
+
+							<div class="input-wrapper" ng-repeat="opt in lRCtrl.vQuestions[$index].q_options">
+
+								<div class="clearfix prettycheckbox labelright  blue jsPrettyOptionWrap" data-option-type="checkbox">
+									<input type="checkbox" 
+										class="myClass invisible" 
+										value="{{opt.score_value}}"  
+										name="chk_multiple_{{question.q_id}}"
+										id="chk_multiple_{{opt.option_id}}" />
+
+									<a href="javascript:void(0);" class=""></a>
+									<label for="" ng-bind="opt.option_text"></label>
+								</div>							
+							</div>
+
+						</div>
+
+
+						<div ng-if="lRCtrl.vQuestions[$index].q_type == 'single' ">
+
+							<div class="input-wrapper" ng-repeat="opt in lRCtrl.vQuestions[$index].q_options">
+
+								<div class="clearfix prettyradio labelright  blue jsPrettyOptionWrap" data-option-type="radio">
+									<input type="radio" 
+										class="myClass invisible" 
+										value="{{opt.score_value}}"
+										name="rdo_single_{{opt.option_group}}"  
+										id="rdo_single_{{opt.option_id}}" 
+										data-label="{{opt.option_text}}" />
+
+									<a href="javascript:void(0)" class=""></a>
+									<label for="rdo_single_{{opt.option_id}}">{{opt.option_text}}</label>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="process" ng-if="lRCtrl.vQuestions[$index].q_type == 'scale' ">
+
+				            <div class="process-row">
+				                <div class="process-step has-pretty-child" ng-repeat="scaleOpt in lRCtrl.vQuestions[$index].q_options">
+				                	<div class="clearfix prettyradio labelright  blue jsPrettyOptionWrap" data-option-type="radio">
+					                	<input type="radio" 
+					                		class="myClass invisible" 
+					                		name="rdo_{{scaleOpt.option_group}}" 
+					                		id="rdo_{{scaleOpt.option_group +'_'+scaleOpt.option_id}}" 
+					                		value="{{scaleOpt.score_value}}" />
+
+					                	<a href="javascript:void(0)" class=""></a>
+					                </div>
+					                <p for="rdo_{{scaleOpt.option_group +'_'+scaleOpt.option_id}}" ng-bind="scaleOpt.option_text"></p>
+				                </div>
+				            </div>
+
+				        </div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-action text-center clearfix">
+			<a href="javascript:void(0)" class="btn btn-small btn-primary jsNextBtn" ng-click="main.nextPageTrigger('formLawAndRegulation')">Next</a>
+		</div>
+	</form>
+</div><!-- /lawAndRegulations-template --> 
+ <!-- -->
